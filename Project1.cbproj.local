@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.632,C:\Users\Pasha\Documents\Embarcadero\Studio\Projects\Unit1.cpp=D:\Учеба\1 курс\2 семестр\абракадабра2\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.632,C:\Users\Pasha\Documents\Embarcadero\Studio\Projects\Unit1.h=D:\Учеба\1 курс\2 семестр\абракадабра2\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.929,=D:\Учеба\1 курс\2 семестр\абракадабра2\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.207,=C:\Users\Pasha\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.147,C:\Users\Pasha\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Учеба\1 курс\2 семестр\абракадабра2\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.438,=C:\Users\Pasha\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.632,C:\Users\Pasha\Documents\Embarcadero\Studio\Projects\Unit1.fmx=D:\Учеба\1 курс\2 семестр\абракадабра2\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.925,C:\Users\Pasha\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Учеба\1 курс\2 семестр\абракадабра2\Project1.cbproj</Transaction>
+  </Transactions>
+	<MobileDevice>8853D4F799FE</MobileDevice>
+</BorlandProject>

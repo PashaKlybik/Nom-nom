@@ -1,0 +1,18 @@
+inherited Form2_NmXhdpiPh: TForm2_NmXhdpiPh
+  ClientHeight = 615
+  ClientWidth = 400
+  DesignerMasterStyle = 0
+  inherited Layout2: TLayout
+    Size.Width = 400.000000000000000000
+    Size.Height = 615.000000000000000000
+  end
+  inherited Layout1: TLayout
+    Position.X = -32.000000000000000000
+    Position.Y = 7.000000000000000000
+    inherited Image1: TImage
+      inherited SpeedButton2: TSpeedButton
+        Position.X = 8.000000000000000000
+      end
+    end
+  end
+end
