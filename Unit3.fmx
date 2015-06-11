@@ -1367,7 +1367,7 @@ object Form3: TForm3
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Top
         TabOrder = 0
-        Size.Width = 745.000000000000000000
+        Size.Width = 50.000000000000000000
         Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
       end

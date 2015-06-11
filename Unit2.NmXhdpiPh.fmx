@@ -14,5 +14,8 @@ inherited Form2_NmXhdpiPh: TForm2_NmXhdpiPh
         Position.X = 8.000000000000000000
       end
     end
+    inherited Label3: TLabel
+      Position.X = 112.000000000000000000
+    end
   end
 end

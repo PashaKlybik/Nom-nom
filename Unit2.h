@@ -13,8 +13,24 @@
 #include <FMX.Colors.hpp>
 #include <vector>
 //---------------------------------------------------------------------------
-
-
+struct CookIngr {
+	int id;
+	AnsiString NameIngr;
+};
+//---------------------------------------------------------------------------
+struct CookStep {
+	AnsiString Link, Text;
+};
+//---------------------------------------------------------------------------
+struct recept{
+	std::vector<CookIngr> Ingrd;
+	std::vector<CookStep> Steps;
+	float interest;
+	AnsiString Name;
+};
+//-!!!!!!!!!!!---------------------------------------------------------------
+extern std::vector<recept> Recepts;
+//-----------------------------------------------------------!!!!!!!!!!!!!!--
 class Fridge {
 	private:
 		int ctg,ing;
@@ -35,6 +51,7 @@ class Fridge {
 };
 
 //---------------------------------------------------------------------------
+
 class TForm2 : public TForm
 {
 __published:	// IDE-managed Components
@@ -45,10 +62,20 @@ __published:	// IDE-managed Components
 	TVertScrollBox *VertScrollBox1;
 	TSpeedButton *SpeedButton2;
 	TImage *Image2;
-	TPanel *Panel1;
+	TTimer *Timer1;
+	TButton *Button1;
+	TImage *Image4;
+	TLabel *Label1;
+	TLabel *Label2;
+	TLabel *Label3;
+	TSpeedButton *SpeedButton1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall SpeedButton2Click(TObject *Sender);
 	void __fastcall Image2Click(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
+	void __fastcall SpeedButton1Click(TObject *Sender);
+	void __fastcall ParsRecipe();
 
 
 

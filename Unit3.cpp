@@ -22,16 +22,15 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 }
 
 //---------------------------------------------------------------------------
-void TForm3::Create_ingr()
+void __fastcall TForm3::Create_ingr()
 {
-	
-	
+
 	for (int i = 0; i < catg_arr.size(); i++) {
 		catg_arr[i].ListBoxGroupHeader =new TListBoxGroupHeader(ListBox1);
 		catg_arr[i].ListBoxGroupHeader->Text = catg_arr[i].Name_catgr;
 		for (int j = 0; j < catg_arr[i].catgr_ingr.size(); j++) {
-		
-			
+			catg_arr[i].catgr_ingr[j].select = true;
+
 			catg_arr[i].catgr_ingr[j].ListBoxItem =  new TListBoxItem(catg_arr[i].ListBoxGroupHeader);
 			catg_arr[i].catgr_ingr[j].ListBoxItem->Text = catg_arr[i].catgr_ingr[j].name;
 			catg_arr[i].catgr_ingr[j].ListBoxItem->OnClick = Form3->IngrClick;
@@ -45,14 +44,14 @@ void TForm3::Create_ingr()
 			catg_arr[i].catgr_ingr[j].ListBoxItem->StyledSettings = catg_arr[i].catgr_ingr[j].ListBoxItem->StyledSettings>>TStyledSetting::Size;
 			catg_arr[i].catgr_ingr[j].ListBoxItem->StyledSettings = catg_arr[i].catgr_ingr[j].ListBoxItem->StyledSettings>>TStyledSetting::Style;
 			catg_arr[i].catgr_ingr[j].ListBoxItem->StyledSettings = catg_arr[i].catgr_ingr[j].ListBoxItem->StyledSettings>>TStyledSetting::Other;
-			
+
 		}
 	}
  //	Form3->print();
 
 }
 //---------------------------------------------------------------------------
-void TForm3::print()
+void __fastcall TForm3::print()
 {
   /*
 	for (int i = 0; i < catg_arr.size(); i++) {
@@ -65,6 +64,7 @@ void TForm3::print()
 			}
 		}
 	}        */
+	ListBox1->BeginUpdate();
 	ListBox1->Clear();
 	for (int i = 0; i < catg_arr.size(); i++) {
 		if (catg_arr[i].c_ing != 0) {
@@ -75,11 +75,11 @@ void TForm3::print()
 			}
 		}
     }
-	
 
+	ListBox1->EndUpdate();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm3::FormCreate(TObject *Sender)
+void __fastcall TForm3::FormCreate(TObject *Sender)                            // парсинг базы ингредиентов
 {
 
 	Layout1->Scale->Y = Form2->Layout1->Scale->Y;
@@ -93,10 +93,18 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 	TStringList *JS = new TStringList;
 	TIdHTTP* IdHTTP = new TIdHTTP;
 
+	JS->LoadFromFile("sdcard/Nom-nom/Ingr.txt");
 
+ /*    Тут проверка будет на наличие интернета
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	TJSONObject *Arr_cat = (TJSONObject*) TJSONObject::ParseJSONValue(TEncoding::ASCII->GetBytes(IdHTTP->Get("http://pastebin.com/raw.php?i=VkhL7Bxw")),0);
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  */
+	TJSONObject *Arr_cat = (TJSONObject*) TJSONObject::ParseJSONValue(JS->Text);
 
-	ListBox1->BeginUpdate();
+
+
+
 	__try {
 		for (int i = 0; i < Arr_cat->Count; i++) {
 			Catgr temp;
@@ -106,8 +114,9 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 			for (int e = 1; e  < str.Length() - 1; e++) {
 				temp.Name_catgr +=str[e];
 			}
+			temp.c_ing = 0;
 			for (int j = 0; j< Ctg->Size(); j++) {
-				temp.c_ing++;	
+				temp.c_ing++;
 				TJSONObject  *Ingr = (TJSONObject*) Ctg->Get(j);
 				temp_ingr.id = StrToInt(Ingr->Pairs[0]->JsonValue->ToString());
 				temp_ingr.name = "";
@@ -116,17 +125,17 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 				for (int e = 1; e  < str.Length() - 1; e++) {
 						temp_ingr.name +=str[e];
 				}
-				temp.catgr_ingr.push_back(temp_ingr); 
+				temp.catgr_ingr.push_back(temp_ingr);
 			}
 			catg_arr.push_back(temp);
 		}
 		Form3->Create_ingr();
-	}     
+	}
 	__finally {
 		Arr_cat->Free();
 	}
 
-	ListBox1->EndUpdate();
+	Form3->print();
 
 }
 //---------------------------------------------------------------------------
@@ -136,7 +145,7 @@ void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
 	Form2->Show();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm3::IngrClick(TObject *Sender)
+void __fastcall TForm3::IngrClick(TObject *Sender)                  // выбор нового ингредиента
 {
 
 	int i = (int)((TListBoxItem*)(Sender))->Tag;
@@ -152,17 +161,14 @@ void __fastcall TForm3::IngrClick(TObject *Sender)
 		ListBox1->RemoveObject(catg_arr[i].ListBoxGroupHeader);
 	}
 
-  
+
 }
 //---------------------------------------------------------------------------
 
 
-
-
-
 void __fastcall TForm3::FormShow(TObject *Sender)
 {
-	Form3->print();
+ //	Form3->print();
 }
 //---------------------------------------------------------------------------
 

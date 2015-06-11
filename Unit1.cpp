@@ -9,6 +9,7 @@
 #pragma resource "*.fmx"
 
 #include "Unit2.h"
+#include "Unit4.h"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -19,7 +20,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 
 
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TForm1::FormCreate(TObject *Sender)                   // создание второй формы, подгон под экран
 {
 
   Layout1->Scale->X = Layout2->Width / Layout1->Width;
@@ -30,7 +31,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   //Form2->Create();
 }
 //---------------------------------------------------------------------------
-
 
 
 
@@ -47,6 +47,7 @@ void __fastcall TForm1::Image2Click(TObject *Sender)
 {
 	Form1->Hide();
 	Form2->Show();
+
 }
 //---------------------------------------------------------------------------
 
@@ -54,13 +55,15 @@ void __fastcall TForm1::Image2Click(TObject *Sender)
 
 void __fastcall TForm1::Image4Click(TObject *Sender)
 {
-	ShowMessage("Тут все красиво:)");
+	Form4->ShowRec(0); //	ShowMessage("Тут все красиво:)");
+	Form1->Hide();
+	Form4->Show();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image3Click(TObject *Sender)
 {
-	ShowMessage("Тут все красиво:)");
+	ShowMessage("Tyt vse po dzeny:)");
 }
 //---------------------------------------------------------------------------
 

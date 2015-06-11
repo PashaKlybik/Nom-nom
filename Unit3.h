@@ -25,7 +25,7 @@ struct Ingr
 	TListBoxItem *ListBoxItem;
 	int id;
 	AnsiString name;
-	bool select = true;
+	bool select;// = true;
 //	int category;
 };
 //---------------------------------------------------------------------------
@@ -34,7 +34,7 @@ struct Catgr
 	AnsiString Name_catgr;
 	std::vector<Ingr> catgr_ingr;
 	TListBoxGroupHeader *ListBoxGroupHeader;
-	int c_ing = 0;
+	int c_ing;// = 0;
 };
 
 extern std::vector<Catgr> catg_arr;
